@@ -26,19 +26,19 @@
   left: 497px;
   height: 540px;
   width: 250px;
-  background-image: url(images/ss1.png);
+  background-image: url(https://instalogin-clone.vercel.app/images/ss1.png);
   animation: changeImage 6s ease-in infinite;
 }
 /* Animate */
 @keyframes changeImage {
   0% {
-    background-image: url(images/ss1.png);
+    background-image: url(https://instalogin-clone.vercel.app/images/ss1.png);
   }
   50% {
-    background-image: url(images/ss2.png);
+    background-image: url(https://instalogin-clone.vercel.app/images/ss2.png);
   }
   100% {
-    background-image: url(images/ss3.png);
+    background-image: url(https://instalogin-clone.vercel.app/images/ss3.png);
   }
 }
 .loginbox {
@@ -241,18 +241,18 @@ a {
     left: 497px;
     height: 540px;
     width: 250px;
-    background-image: url(ss1.png);
+    background-image: url(https://instalogin-clone.vercel.app/images/ss1.png);
     animation: changeImage 6s ease-in infinite;
   }
   @keyframes changeImage {
     0% {
-      background-image: url(ss1.png);
+      background-image: url(https://instalogin-clone.vercel.app/images/ss1.png);
     }
     50% {
-      background-image: url(ss2.png);
+      background-image: url(https://instalogin-clone.vercel.app/images/ss2.png);
     }
     100% {
-      background-image: url(ss3.png);
+      background-image: url(https://instalogin-clone.vercel.app/images/ss3.png);
     }
   }
   .loginbox {
